@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ServiceGroup } from '../../types/serviceGroups';
+import { ServiceGroupInfo } from '../../types/serviceGroups';
 
-const initialState: ServiceGroup[] = [];
+const initialState: ServiceGroupInfo[] = [];
 
 export const serviceGroupsSlice = createSlice({
   name: 'serviceGroups',
-  initialState, // Отличие группы из адаптера от группы приложения в наличии признака selected
+  initialState,
   reducers: {
-    setGroups: (state, action: PayloadAction<ServiceGroup[]>) => {
+    setGroups: (state, action: PayloadAction<ServiceGroupInfo[]>) => {
       const newSelected =
         action.payload.find((group) => group.selected)?.id ??
         (state.length > 0
@@ -17,7 +17,7 @@ export const serviceGroupsSlice = createSlice({
       if (newSelected == null) {
         return action.payload;
       }
-      return [...state, ...action.payload].map((group) =>
+      return action.payload.map((group) =>
         group.id === newSelected ? { ...group, selected: true } : group
       );
     },

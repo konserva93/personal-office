@@ -1,4 +1,8 @@
 import * as S from './Header.styled';
 import React, { FC } from 'react';
 
-export const Header: FC<{}> = () => <S.Header />;
+type Props = {
+  title: string;
+};
+
+export const Header: FC<Props> = ({ title }) => <S.Header>{title}</S.Header>;

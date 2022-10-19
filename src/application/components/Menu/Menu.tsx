@@ -1,14 +1,15 @@
 import * as S from './Menu.styled';
 import React, { FC } from 'react';
-import { useServiceGroupsStorage } from '../../redux/rootReducer';
+import { ServiceGroupInfo } from '../../types/serviceGroups';
 
-export const Menu: FC<{}> = () => {
-  const serviceGroups = useServiceGroupsStorage();
-  return (
-    <S.Wrapper>
-      {serviceGroups.map((group) => (
-        <div key={group.id}>{group.caption}</div>
-      ))}
-    </S.Wrapper>
-  );
-};
+interface Props {
+  serviceGroups: ServiceGroupInfo[];
+}
+
+export const Menu: FC<Props> = ({ serviceGroups }) => (
+  <S.Wrapper>
+    {serviceGroups.map((group) => (
+      <div key={group.id}>{group.title}</div>
+    ))}
+  </S.Wrapper>
+);

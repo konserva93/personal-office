@@ -11,17 +11,6 @@ if (process.env.NODE_ENV === 'development') {
   await worker.start();
 }
 
-fetch('/api')
-  .then(async (response) => {
-    return response.json();
-  })
-  .then((data) => {
-    console.log(data);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

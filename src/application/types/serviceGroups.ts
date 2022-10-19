@@ -1,5 +1,5 @@
-export interface ServiceGroup {
+export interface ServiceGroupInfo {
   id: UniqueId;
-  caption: string;
+  title: string;
   selected: boolean;
 }

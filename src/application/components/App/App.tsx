@@ -1,20 +1,22 @@
 import * as S from './App.styled';
 import React, { useEffect } from 'react';
-import { Layout } from '../Layout/Layout';
 import { Menu } from '../Menu/Menu';
-import { Header } from '../Header/Header';
 import { getServiceGroups } from '../../../adapters/serviceGroups/serviceGroups';
+import { useServiceGroupsStorage } from '../../redux/rootReducer';
+import { MainContent } from '../MainContent/MainContent';
 
 function App(): JSX.Element {
-  useEffect(() => getServiceGroups(), []);
-
+  useEffect(() => {
+    console.log('app mount');
+    void getServiceGroups();
+  }, []);
+  const serviceGroups = useServiceGroupsStorage();
   return (
     <S.Wrapper>
-      <Menu />
-      <S.Content>
-        <Header />
-        <Layout />
-      </S.Content>
+      <Menu serviceGroups={serviceGroups} />
+      <MainContent
+        serviceGroup={serviceGroups.find((group) => group.selected)}
+      />
     </S.Wrapper>
   );
 }

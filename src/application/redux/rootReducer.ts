@@ -1,5 +1,5 @@
 import serviceGroupsReducer from './slices/serviceGroups';
-import { ServiceGroup } from '../types/serviceGroups';
+import { ServiceGroupInfo } from '../types/serviceGroups';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
 
 export const rootReducer = {
@@ -7,10 +7,10 @@ export const rootReducer = {
 };
 
 interface RootState {
-  serviceGroups: ServiceGroup[];
+  serviceGroups: ServiceGroupInfo[];
 }
 
 const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
 
-export const useServiceGroupsStorage = () =>
+export const useServiceGroupsStorage = (): ServiceGroupInfo[] =>
   useTypedSelector((state) => state.serviceGroups);
