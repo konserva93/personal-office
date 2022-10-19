@@ -1,10 +1,10 @@
 import * as S from './MainContent.styled';
 import React, { FC, useEffect, useState } from 'react';
-import { ServiceGroupInfo } from '../../types/serviceGroups';
-import { getServiceGroup } from '../../../adapters/serviceGroups/serviceGroups';
-import { ServiceGroup } from '../../../adapters/serviceGroups/types';
-import { Header } from '../Header/Header';
-import { Layout } from '../Layout/Layout';
+import { ServiceGroupInfo } from '@application/types/serviceGroups';
+import { getServiceGroup } from '@adapters/serviceGroups/serviceGroups';
+import { ServiceGroup } from '@adapters/serviceGroups/types';
+import { Header } from '@components/Header/Header';
+import { Layout } from '@components/Layout/Layout';
 
 type Props = {
   serviceGroup?: ServiceGroupInfo;

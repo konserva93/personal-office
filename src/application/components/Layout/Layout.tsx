@@ -1,6 +1,6 @@
 import * as S from './Layout.styled';
 import React from 'react';
-import { ContentArea } from '../../../adapters/serviceGroups/types';
+import { ContentArea } from '@adapters/serviceGroups/types';
 
 type Props = {
   content: ContentArea;

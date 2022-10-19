@@ -1,8 +1,8 @@
-import { sendRequest } from '../network';
-import { ServiceGroup, ServiceGroupInfo } from './types';
-import { ServiceGroupInfo as AppServiceGroupInfo } from '../../application/types/serviceGroups';
-import { store } from '../../store';
-import { setGroups } from '../../application/redux/slices/serviceGroups';
+import { sendRequest } from '@adapters/network';
+import { ServiceGroup, ServiceGroupInfo } from './types'; // adapters layer
+import { ServiceGroupInfo as AppServiceGroupInfo } from '@application/types/serviceGroups';
+import { store } from '@src/store';
+import { setGroups } from '@redux/slices/serviceGroups';
 
 const port = (groups: ServiceGroupInfo[]): AppServiceGroupInfo[] =>
   groups.map((group) => ({ ...group, selected: false }));

@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './application/components/App/App';
+import App from '@application/components/App/App';
 import reportWebVitals from './reportWebVitals';
-import { store } from './store';
+import { store } from '@src/store';
 import { Provider } from 'react-redux';
 
 if (process.env.NODE_ENV === 'development') {

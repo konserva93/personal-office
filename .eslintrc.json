@@ -44,5 +44,19 @@
         "@typescript-eslint/explicit-function-return-type": "warn",
         "@typescript-eslint/consistent-type-definitions": "off",
         "@typescript-eslint/strict-boolean-expressions": "off"
+    },
+    "settings": {
+        "import/resolver": {
+            "alias": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"],
+                "map": [
+                    [ "@src", "./src"],
+                    [ "@adapters", "./src/adapters"],
+                    [ "@application", "./src/application"],
+                    [ "@components", "./src/application/components"],
+                    [ "@redux", "./src/application/redux"]
+                ]
+            }
+        }
     }
 }

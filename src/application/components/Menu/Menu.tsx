@@ -1,6 +1,6 @@
 import * as S from './Menu.styled';
 import React, { FC } from 'react';
-import { ServiceGroupInfo } from '../../types/serviceGroups';
+import { ServiceGroupInfo } from '@application/types/serviceGroups';
 
 interface Props {
   serviceGroups: ServiceGroupInfo[];
