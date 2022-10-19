@@ -1,4 +1,4 @@
-import { ServiceGroup } from '../adapters/serviceGroups/types';
+import { ServiceGroup } from '@adapters/serviceGroups/types';
 
 export const serviceGroups: Record<string, Omit<ServiceGroup, 'id'>> = {
   '3cf48725-834d-4845-9f58-9245a316cdb4': {
