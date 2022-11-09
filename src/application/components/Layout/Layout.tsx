@@ -1,16 +1,32 @@
 import * as S from './Layout.styled';
-import React from 'react';
-import { ContentArea } from '@adapters/serviceGroups/types';
+import React, { FC } from 'react';
+import {
+  ContentArea as TContentArea,
+  isFlexArea,
+  isWidget,
+} from '@adapters/serviceGroups/types';
+import { Widget } from '@src/ui/Widget/Widget';
 
-type Props = {
-  content: ContentArea;
+const ContentArea: FC<{ area: TContentArea }> = ({ area }) => {
+  if (isFlexArea(area)) {
+    return (
+      <S.FlexArea flexDirection={area.direction}>
+        {area.items.map((item, idx) => {
+          if (isWidget(item)) {
+            return <Widget key={idx} title={item.title} />;
+          }
+          return <ContentArea key={idx} area={item} />;
+        })}
+      </S.FlexArea>
+    );
+  }
+  return null;
 };
 
-export const Layout: React.FC<Props> = ({ content }) => (
-  <S.Content
-    display={content.type}
-    flexDirection={content.type === 'flex' ? content.direction : undefined}
-  >
-    {JSON.stringify(content.items)}
-  </S.Content>
+type Props = {
+  content: TContentArea;
+};
+
+export const Layout: FC<Props> = ({ content }) => (
+  <ContentArea area={content} />
 );

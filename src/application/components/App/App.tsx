@@ -10,6 +10,7 @@ function App(): JSX.Element {
     console.log('app mount');
     void getServiceGroups();
   }, []);
+
   const serviceGroups = useServiceGroupsStorage();
   return (
     <S.Wrapper>

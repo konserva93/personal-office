@@ -1,15 +1,21 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
-type Props = {
-  display: 'flex';
-  flexDirection?: 'row' | 'column';
+type FlexAreaProps = {
+  flexDirection: 'row' | 'column';
 };
 
-export const Content = styled.div`
-  ${({ display, flexDirection }: Props) => `
-  display: ${display};
-  ${flexDirection ? `flex-direction: ${flexDirection};` : ''}
-  height: 100vh;
-  background-color: #cfcfcf;
-`}
+export const FlexArea = styled.div`
+  ${({ flexDirection }: FlexAreaProps) => `
+    display: flex;
+    flex-direction: ${flexDirection};
+    height: 100vh;
+    background-color: #cfcfcf;
+    gap: 16px;
+  `}
+
+  > * {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 100%;
+  }
 `;
