@@ -12,7 +12,7 @@ type Props = {
 
 export const MainContent: FC<Props> = ({ serviceGroup }) => {
   const [serviceGroupData, setServiceGroupData] = useState<
-    ServiceGroup | undefined
+  ServiceGroup | undefined
   >();
   useEffect(() => {
     if (serviceGroup) {
@@ -30,11 +30,10 @@ export const MainContent: FC<Props> = ({ serviceGroup }) => {
   return (
     <S.Content>
       <Header title={serviceGroupData?.title ?? ''} />
-      {serviceGroupData?.content ? (
-        <Layout content={serviceGroupData.content} />
-      ) : (
-        <p>no content</p> // TODO: replace with placeholder
-      )}
+      {serviceGroupData?.content
+        ? <Layout content={serviceGroupData.content} />
+        : <p>no content</p> // TODO: replace with placeholder
+      }
     </S.Content>
   );
 };

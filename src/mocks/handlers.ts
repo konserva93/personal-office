@@ -10,8 +10,8 @@ export const handlers = [
         Object.keys(serviceGroups).map((id) => ({
           id,
           title: serviceGroups[id].title,
-        }))
-      )
+        })),
+      ),
     );
   }),
   rest.get('/servicegroups/:id', (req, res, ctx) => {
@@ -23,7 +23,7 @@ export const handlers = [
         ctx.json({
           id,
           ...serviceGroups[id],
-        })
+        }),
       );
     } else {
       return res(ctx.status(500));
