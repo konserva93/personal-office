@@ -18,7 +18,7 @@ export const serviceGroupsSlice = createSlice({
         return action.payload;
       }
       return action.payload.map((group) =>
-        group.id === newSelected ? { ...group, selected: true } : group
+        group.id === newSelected ? { ...group, selected: true } : group,
       );
     },
   },

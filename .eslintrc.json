@@ -55,6 +55,11 @@
                     [ "@redux", "./src/application/redux"]
                 ]
             }
+        },
+        "settings": {
+            "react": {
+                "version": "detect"
+            }
         }
     }
 }
