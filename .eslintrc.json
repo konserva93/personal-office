@@ -6,9 +6,7 @@
     "extends": [
         "plugin:react/recommended",
         "standard-with-typescript",
-        "airbnb-typescript",
-        "plugin:prettier/recommended",
-        "prettier"
+        "airbnb-typescript"
     ],
     "overrides": [
     ],
@@ -19,17 +17,11 @@
     },
     "plugins": [
         "@typescript-eslint",
-        "react",
-        "prettier"
+        "react"
     ],
     "rules": {
         "react/jsx-filename-extension": [1, {
             "extensions": [".js", ".jsx", ".ts", ".tsx"]
-        }],
-        "prettier/prettier": ["error", {
-            "singleQuote": true,
-            "jsxSingleQuote": false,
-            "endOfLine": "auto"
         }],
         "import/extensions": [
             "error",
@@ -43,7 +35,13 @@
         ],
         "@typescript-eslint/explicit-function-return-type": "warn",
         "@typescript-eslint/consistent-type-definitions": "off",
-        "@typescript-eslint/strict-boolean-expressions": "off"
+        "@typescript-eslint/strict-boolean-expressions": "off",
+        "@typescript-eslint/member-delimiter-style": ["error", {
+            "multiline": {
+                "delimiter": "semi",
+                "requireLast": true
+            }
+        }]
     },
     "settings": {
         "import/resolver": {
