@@ -4,16 +4,14 @@ import { ServiceGroupInfo } from '@application/types/serviceGroups';
 import { getServiceGroup } from '@adapters/serviceGroups/serviceGroups';
 import { ServiceGroup } from '@adapters/serviceGroups/types';
 import { Header } from '@components/Header/Header';
-import { Layout } from '@components/Layout/Layout';
+import { ServiceGroupContent } from './ServiceGroupContent/ServiceGroupContent';
 
 type Props = {
   serviceGroup?: ServiceGroupInfo;
 };
 
 export const MainContent: FC<Props> = ({ serviceGroup }) => {
-  const [serviceGroupData, setServiceGroupData] = useState<
-  ServiceGroup | undefined
-  >();
+  const [serviceGroupData, setServiceGroupData] = useState<ServiceGroup | undefined>();
   useEffect(() => {
     if (serviceGroup) {
       void (async () => {
@@ -31,7 +29,7 @@ export const MainContent: FC<Props> = ({ serviceGroup }) => {
     <S.Content>
       <Header title={serviceGroupData?.title ?? ''} />
       {serviceGroupData?.content
-        ? <Layout content={serviceGroupData.content} />
+        ? <ServiceGroupContent content={serviceGroupData.content} />
         : <p>no content</p> // TODO: replace with placeholder
       }
     </S.Content>

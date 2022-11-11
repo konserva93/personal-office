@@ -8,10 +8,19 @@ export const serviceGroups: Record<string, Omit<ServiceGroup, 'id'>> = {
       direction: 'row',
       items: [
         {
-          title: 'widget1',
+          type: 'flex',
+          direction: 'column',
+          items: [
+            {
+              title: 'widget1',
+            },
+            {
+              title: 'widget2',
+            },
+          ],
         },
         {
-          title: 'widget2',
+          title: 'widget3',
         },
       ],
     },

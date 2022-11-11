@@ -1,4 +1,4 @@
-import * as S from './Layout.styled';
+import * as S from './ServiceGroupContent.styled';
 import React, { FC } from 'react';
 import {
   ContentArea as TContentArea,
@@ -27,6 +27,8 @@ type Props = {
   content: TContentArea;
 };
 
-export const Layout: FC<Props> = ({ content }) => (
-  <ContentArea area={content} />
+export const ServiceGroupContent: FC<Props> = ({ content }) => (
+  <S.ContentWrapper>
+    <ContentArea area={content} />
+  </S.ContentWrapper>
 );
