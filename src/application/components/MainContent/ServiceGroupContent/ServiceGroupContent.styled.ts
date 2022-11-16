@@ -13,7 +13,8 @@ export const FlexArea = styled.div`
   ${({ flexDirection }: FlexAreaProps) => `
     display: flex;
     flex-direction: ${flexDirection};
-    height: 100%;
+    flex-wrap: wrap;
+    height: auto;
     width: 100%;
     gap: 16px;
   `}
@@ -21,6 +22,6 @@ export const FlexArea = styled.div`
   > * {
     flex-grow: 1;
     flex-shrink: 1;
-    flex-basis: 100%;
+    flex-basis: min-content;
   }
 `;

@@ -13,14 +13,45 @@ export const serviceGroups: Record<string, Omit<ServiceGroup, 'id'>> = {
           items: [
             {
               title: 'widget1',
+              properties: {
+                type: 'text',
+                url: '',
+              },
             },
             {
-              title: 'widget2',
+              type: 'flex',
+              direction: 'row',
+              items: [
+                {
+                  title: 'widget2.1',
+                  properties: {
+                    type: 'textWithButton',
+                    url: '',
+                    button: {
+                      caption: 'test',
+                    },
+                  },
+                },
+                {
+                  title: 'widget2.2',
+                  properties: {
+                    type: 'textWithButton',
+                    url: '',
+                    button: {
+                      caption: 'test',
+                    },
+                  },
+                },
+              ],
             },
           ],
         },
         {
           title: 'widget3',
+          properties: {
+            type: 'text',
+            url: '',
+          },
         },
       ],
     },
@@ -33,9 +64,17 @@ export const serviceGroups: Record<string, Omit<ServiceGroup, 'id'>> = {
       items: [
         {
           title: 'widget1',
+          properties: {
+            type: 'text',
+            url: '',
+          },
         },
         {
           title: 'widget2',
+          properties: {
+            type: 'text',
+            url: '',
+          },
         },
       ],
     },
@@ -48,9 +87,17 @@ export const serviceGroups: Record<string, Omit<ServiceGroup, 'id'>> = {
       items: [
         {
           title: 'widget1',
+          properties: {
+            type: 'text',
+            url: '',
+          },
         },
         {
           title: 'widget2',
+          properties: {
+            type: 'text',
+            url: '',
+          },
         },
       ],
     },
@@ -63,9 +110,17 @@ export const serviceGroups: Record<string, Omit<ServiceGroup, 'id'>> = {
       items: [
         {
           title: 'widget1',
+          properties: {
+            type: 'text',
+            url: '',
+          },
         },
         {
           title: 'widget2',
+          properties: {
+            type: 'text',
+            url: '',
+          },
         },
       ],
     },
