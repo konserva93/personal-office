@@ -28,8 +28,8 @@ export const MainContent: FC<Props> = ({ serviceGroup }) => {
   return (
     <S.Content>
       <Header title={serviceGroupData?.title ?? ''} />
-      {serviceGroupData?.content
-        ? <ServiceGroupContent content={serviceGroupData.content} />
+      {serviceGroupData?.content && serviceGroupData?.widgets
+        ? <ServiceGroupContent content={serviceGroupData.content} widgets={serviceGroupData.widgets} />
         : <p>no content</p> // TODO: replace with placeholder
       }
     </S.Content>

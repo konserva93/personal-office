@@ -1,35 +1,55 @@
 import * as S from './Widget.styled';
-import { isTextWidgetProperties, Widget as TWidget } from '@adapters/serviceGroups/types/contentAreas';
+import {
+  isListWidgetProperties,
+  isTextWidgetProperties,
+  isTextWithButtonWidgetProperties,
+  Widget as TWidget, WidgetBinding,
+} from '@adapters/serviceGroups/types';
 import React, { FC } from 'react';
+
+const Control: FC<{ properties: TProps['properties'] }> = ({ properties }: Pick<TProps, 'properties'>) => {
+  if (isListWidgetProperties(properties)) {
+    return (
+      <S.List>
+        <S.ListItem/>
+        <S.ListItem/>
+        <S.ListItem/>
+      </S.List>
+    );
+  }
+  if (isTextWidgetProperties(properties)) {
+    return <p>14 days</p>;
+  }
+  if (isTextWithButtonWidgetProperties(properties)) {
+    return <S.TextWithButtonWrapper>
+      <p>14 days available for planning</p>
+      <S.Button caption={properties.button.caption} />
+    </S.TextWithButtonWrapper>;
+  }
+
+  return null;
+};
+
+const getDefaultMinWidth = (widgetType: TWidget['properties']['type']): string => (
+  {
+    text: '250px',
+    textWithButton: '250px',
+    buttons: '250px',
+    list: '400px',
+  }[widgetType]
+);
 
 type TProps = {
   title: string;
   properties: TWidget['properties'];
+  binding: WidgetBinding;
 };
 
-export const Widget: FC<TProps> = ({ title, properties }) => (
-  <S.Card style={{ maxWidth: '-webkit-fill-available' }}>
+export const Widget: FC<TProps> = ({ title, properties, binding }) => (
+  <S.Card>
     <S.Header>{title}</S.Header>
-    {isTextWidgetProperties(properties)
-      ? (
-        <S.List>
-          <S.ListItem/>
-          <S.ListItem/>
-          <S.ListItem/>
-        </S.List>
-      )
-      : title === 'widget2.1'
-        ? (
-          <S.ButtonsWrapper>
-            <S.Button type="button">test</S.Button>
-          </S.ButtonsWrapper>
-        )
-        : (
-          <S.ButtonsWrapper>
-            <S.Button type="button">test</S.Button>
-            <S.Button type="button">testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest</S.Button>
-          </S.ButtonsWrapper>
-        )
-    }
+    <S.ControlWrapper minWidth={binding.minWidth ?? getDefaultMinWidth(properties.type)}>
+      <Control properties={properties} />
+    </S.ControlWrapper>
   </S.Card>
 );

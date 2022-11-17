@@ -3,19 +3,23 @@ import React, { FC } from 'react';
 import {
   ContentArea as TContentArea,
   isFlexArea,
-  isWidget,
-} from '@adapters/serviceGroups/types/contentAreas';
+  isWidgetBinding,
+  Widget as TWidget,
+} from '@adapters/serviceGroups/types';
 import { Widget } from '@src/ui/Widget/Widget';
 
-const ContentArea: FC<{ area: TContentArea }> = ({ area }) => {
+const ContentArea: FC<{ area: TContentArea; widgets: TWidget[] }> = ({ area, widgets }) => {
   if (isFlexArea(area)) {
     return (
       <S.FlexArea flexDirection={area.direction}>
         {area.items.map((item, idx) => {
-          if (isWidget(item)) {
-            return <Widget key={idx} title={item.title} properties={item.properties}/>;
+          if (isWidgetBinding(item)) {
+            const widget = widgets.find(w => w.name === item.name);
+            return widget
+              ? <Widget key={idx} title={widget.title} properties={widget.properties} binding={item} />
+              : null;
           }
-          return <ContentArea key={idx} area={item} />;
+          return <ContentArea key={idx} area={item} widgets={widgets} />;
         })}
       </S.FlexArea>
     );
@@ -23,12 +27,13 @@ const ContentArea: FC<{ area: TContentArea }> = ({ area }) => {
   return null;
 };
 
-type Props = {
+type TProps = {
   content: TContentArea;
+  widgets: TWidget[];
 };
 
-export const ServiceGroupContent: FC<Props> = ({ content }) => (
+export const ServiceGroupContent: FC<TProps> = ({ content, widgets }) => (
   <S.ContentWrapper>
-    <ContentArea area={content} />
+    <ContentArea area={content} widgets={widgets} />
   </S.ContentWrapper>
 );
