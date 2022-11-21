@@ -59,7 +59,7 @@ export const serviceGroups: Record<string, Omit<ServiceGroup, 'id'>> = {
         properties: {
           type: 'textWithButton',
           button: {
-            caption: 'test',
+            caption: 'Plan',
             // caption: 'testtesttesttesttesttesttesttesttesttesttest',
           },
         },

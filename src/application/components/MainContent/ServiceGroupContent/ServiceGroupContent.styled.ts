@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 export const ContentWrapper = styled.div`
   padding: 24px;
   background-color: #cfcfcf;
+  overflow: auto;
 `;
 
 type FlexAreaProps = {
@@ -15,7 +16,7 @@ export const FlexArea = styled.div`
     flex-direction: ${flexDirection};
     flex-wrap: wrap;
     height: auto;
-    width: 100%;
+    min-width: min-content;
     gap: 16px;
   `}
 

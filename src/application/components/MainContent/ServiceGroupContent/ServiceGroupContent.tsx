@@ -6,7 +6,7 @@ import {
   isWidgetBinding,
   Widget as TWidget,
 } from '@adapters/serviceGroups/types';
-import { Widget } from '@src/ui/Widget/Widget';
+import { Widget } from '@src/application/components/Widget/Widget';
 
 const ContentArea: FC<{ area: TContentArea; widgets: TWidget[] }> = ({ area, widgets }) => {
   if (isFlexArea(area)) {

@@ -18,12 +18,12 @@ const Control: FC<{ properties: TProps['properties'] }> = ({ properties }: Pick<
     );
   }
   if (isTextWidgetProperties(properties)) {
-    return <p>14 days</p>;
+    return <S.TextWrapper><span>14 days</span></S.TextWrapper>;
   }
   if (isTextWithButtonWidgetProperties(properties)) {
     return <S.TextWithButtonWrapper>
-      <p>14 days available for planning</p>
-      <S.Button caption={properties.button.caption} />
+      <span>14 days available for planning</span>
+      <S.Button color="blue">{properties.button.caption}</S.Button>
     </S.TextWithButtonWrapper>;
   }
 
@@ -32,8 +32,8 @@ const Control: FC<{ properties: TProps['properties'] }> = ({ properties }: Pick<
 
 const getDefaultMinWidth = (widgetType: TWidget['properties']['type']): string => (
   {
-    text: '250px',
-    textWithButton: '250px',
+    text: '200px',
+    textWithButton: '200px',
     buttons: '250px',
     list: '400px',
   }[widgetType]
