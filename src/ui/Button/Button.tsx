@@ -5,6 +5,7 @@ import { ButtonProps } from 'semantic-ui-react';
 type TProps = ButtonProps & {
   children: string;
   className?: string;
+  onClick?: (event: Event) => void;
 };
 
 export const Button: FC<TProps> = ({ children, className, ...rest }) => (

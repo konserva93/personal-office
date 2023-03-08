@@ -6,6 +6,7 @@ import App from '@application/components/App/App';
 import reportWebVitals from './reportWebVitals';
 import { store } from '@src/store';
 import { Provider } from 'react-redux';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 if (process.env.NODE_ENV === 'development') {
   const { worker } = await import('./mocks/browser');
@@ -18,7 +19,12 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+        <BrowserRouter>
+          <Routes>
+            <Route path=":serviceGroup" element={<App />} />
+            <Route path="/" element={<App />} />
+          </Routes>
+        </BrowserRouter>
     </Provider>
   </React.StrictMode>,
 );
